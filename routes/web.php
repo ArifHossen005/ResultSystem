@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CalculateMarksController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
@@ -36,5 +38,10 @@ Route::prefix('results')->group(function () {
     Route::get('/edit/{id}', [ResultController::class, 'edit'])->name('result-edit');
     Route::post('/update/{id}', [ResultController::class, 'update'])->name('result-update');
     Route::delete('/delete/{id}', [ResultController::class, 'delete'])->name('result-delete');
+
+});
+// marks Routes
+Route::prefix('results')->group(function () {
+    Route::get('/totalMarks', [CalculateMarksController::class, 'index'])->name('totalMarks');
 
 });

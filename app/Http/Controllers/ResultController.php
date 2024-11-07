@@ -32,7 +32,7 @@ class ResultController extends Controller
        
         Result::create($data);
        
-        return redirect()->back()->with('success', 'Result added successfully!');
+        return redirect()->route('totalMarks')->with('success', 'Result added successfully!');
     }
 
     public function manage()
@@ -62,7 +62,7 @@ class ResultController extends Controller
         $data = $request->only(['student_id', 'course_id', 'marks']);
         $result->update($data);
 
-        return redirect()->route('manage-result')->with('success', 'Result updated successfully.');
+        return redirect()->route('totalMarks')->with('success', 'Result added successfully!');
     }
 
     public function delete($id)
