@@ -18,19 +18,31 @@ class ResultController extends Controller
 
     public function store(Request $request)
     {
-        
 
-        $request->validate([
-            'student_id' => 'required',
-            'course_id' => 'required',
-            'marks' => 'required|numeric|min:0|max:100', 
+        // $request->validate([
+        //     'student_id' => 'required',
+        //     'course_id' => 'required',
+        //     'marks' => 'required|numeric|min:0|max:100', 
+        // ]);
+
+        $result = Result::create([
+            'student_id' => $request->input('student_id'),
+            'course_id' => $request->input('course_id'),
+           
         ]);
 
-       
-        $data = $request->only(['student_id', 'course_id', 'marks']);
+        foreach ($request->input('marks') as $key => $value) {
+            $result->marks()->create([
+                'marks' => $value,
+                'course_id' => $request->input('course_id')[$key], // Access each course_id individually
+                'result_id' => $result->id,
+            ]);
+        }
+        
+        //$data = $request->only(['student_id', 'course_id', 'marks']);
 
        
-        Result::create($data);
+       
        
         return redirect()->route('totalMarks')->with('success', 'Result added successfully!');
     }

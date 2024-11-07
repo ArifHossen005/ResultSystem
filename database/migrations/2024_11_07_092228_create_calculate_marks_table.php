@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('calculate_marks', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger(column: 'result_id')->nullable();
+            $table->foreign('result_id')->references('id')->on('results')
+            ->restrictOnDelete()
+            ->cascadeOnUpdate();
+
+            $table->unsignedBigInteger(column: 'course_id')->nullable();
+            $table->foreign('course_id')->references('id')->on('courses')
+            ->restrictOnDelete()
+            ->cascadeOnUpdate();
+            
+            $table->string(column: 'marks');
             $table->timestamps();
         });
     }

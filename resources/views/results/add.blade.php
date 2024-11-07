@@ -26,7 +26,7 @@
         <tbody id="dynamic-field-container">
             <tr>
                 <td>
-                    <select name="student_id[]" id="student_id_0" class="form-control">
+                    <select name="student_id" id="student_id_0" class="form-control">
                         <option value="" disabled selected>Select Student</option>
                         @foreach ($students as $student)
                             <option value="{{ $student->id }}">{{ $student->name }}</option>
@@ -34,7 +34,7 @@
                     </select>
                 </td>
                 <td>
-                    <select name="roll[]" id="roll_0" class="form-control">
+                    <select name="roll" id="roll_0" class="form-control">
                         <option value="" disabled selected>Select Roll</option>
                         @foreach ($students as $student)
                             <option value="{{ $student->roll }}">{{ $student->roll }}</option>
@@ -42,7 +42,7 @@
                     </select>
                 </td>
                 <td>
-                    <select name="class[]" id="class_0" class="form-control">
+                    <select name="class" id="class_0" class="form-control">
                         <option value="" disabled selected>Select Class</option>
                         @foreach ($students as $student)
                             <option value="{{ $student->class }}">{{ $student->class }}</option>
