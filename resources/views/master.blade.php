@@ -22,7 +22,7 @@
           <a class="nav-link" href="{{ route('add-course') }}">Add Course</a>
           <a class="nav-link" href="{{ route('manage-course') }}">Manage Course</a> 
           <a class="nav-link" href="{{ route('add-result') }}">Add Result</a>
-          <a class="nav-link" href="{{ route('manage-result') }}">Manage Result</a>
+          <a class="nav-link" href="{{ route('totalMarks') }}">Manage Result</a>
           
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

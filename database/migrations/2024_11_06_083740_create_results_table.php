@@ -19,13 +19,7 @@ return new class extends Migration
             ->restrictOnDelete()
             ->cascadeOnUpdate();
 
-            $table->unsignedBigInteger(column: 'course_id');
-            $table->foreign('course_id')->references('id')->on('courses')
-            ->restrictOnDelete()
-            ->cascadeOnUpdate();
-
-          
-            $table->string(column: 'marks');
+        
             
           
             $table->timestamps();

@@ -2,31 +2,32 @@
 
 @section('content')
 
-<h1 align="center">MD ARIF HOSSEN</h1>
+<br>
 <center>
     <table class="  table-bordered" style="background: #EEE2B5" height="200px" width="500px">
         <thead>
             <tr>
-                <th>Subject  Name</th>
-                <th>Marks obtained</th>
+                <th>Student  Name</th>
+                <th>Student  Roll</th>
+                <th>Action </th>
             </tr>
         </thead>
         <tbody>
+          @foreach ($results as $student) 
           <tr>
-            <td>English</td>
-            <td>80</td>
+            <td>{{$student->student->name}}</td>
+            <td>{{$student->student->roll}}</td>
+            <td>
+              <a href="{{route('result-marks', $student->id)}}" class="btn btn-primary">SHOW</a>
+              <a href="{{route('result-edit', $student->id)}}" class="btn btn-primary">EDIT</a>
+            </td>
           </tr>
-          <tr>
-            <td>Math</td>
-            <td>90</td>
-          </tr>
-          <tr>
-            <td ></td>
-          </tr>
-          <tr>
-            <td>total=</td>
-            <td>170</td>
-          </tr>
+
+          
+      
+          @endforeach
+       
+  
           
         </tbody>
     </table>

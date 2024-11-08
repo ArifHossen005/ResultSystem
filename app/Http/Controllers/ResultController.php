@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\Course;
 use App\Models\Result;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\CalculateMarks;
 
 class ResultController extends Controller
 {
@@ -18,34 +19,24 @@ class ResultController extends Controller
 
     public function store(Request $request)
     {
-
-        // $request->validate([
-        //     'student_id' => 'required',
-        //     'course_id' => 'required',
-        //     'marks' => 'required|numeric|min:0|max:100', 
-        // ]);
-
+        
         $result = Result::create([
             'student_id' => $request->input('student_id'),
-            'course_id' => $request->input('course_id'),
-           
+            
         ]);
-
-        foreach ($request->input('marks') as $key => $value) {
-            $result->marks()->create([
-                'marks' => $value,
-                'course_id' => $request->input('course_id')[$key], // Access each course_id individually
+      
+        // Loop through marks array and associate each mark with a course_id
+        foreach ($request->input('course_id') as $key => $value) {
+               CalculateMarks::create([
+                'course_id' => $value,
+                'marks' =>$request->input('marks')[$key],// Access each course_id individually
                 'result_id' => $result->id,
             ]);
-        }
-        
-        //$data = $request->only(['student_id', 'course_id', 'marks']);
-
        
-       
-       
-        return redirect()->route('totalMarks')->with('success', 'Result added successfully!');
     }
+    
+    return redirect()->route('totalMarks')->with('success', 'Result added successfully!');
+}
 
     public function manage()
 {

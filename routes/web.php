@@ -36,12 +36,14 @@ Route::prefix('results')->group(function () {
     Route::post('/store', [ResultController::class, 'store'])->name('store-result');
     Route::get('/manage', [ResultController::class, 'manage'])->name('manage-result');
     Route::get('/edit/{id}', [ResultController::class, 'edit'])->name('result-edit');
-    Route::post('/update/{id}', [ResultController::class, 'update'])->name('result-update');
     Route::delete('/delete/{id}', [ResultController::class, 'delete'])->name('result-delete');
 
 });
 // marks Routes
 Route::prefix('results')->group(function () {
     Route::get('/totalMarks', [CalculateMarksController::class, 'index'])->name('totalMarks');
+    Route::get('/result-marks/{id}', [CalculateMarksController::class, 'resultMarks'])->name('result-marks');
+    Route::get('/result-edit/{id}', [CalculateMarksController::class, 'edit'])->name('result-edit');
+    Route::post('/result-update/{id}', [CalculateMarksController::class, 'update'])->name('result-update');
 
 });
